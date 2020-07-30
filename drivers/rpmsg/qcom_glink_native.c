@@ -1626,7 +1626,7 @@ static int __qcom_glink_send(struct glink_channel *channel,
 		iid = intent->id;
 	}
 
-	if (wait && (chunk_size > SZ_8K)) {
+	if (wait && chunk_size > SZ_8K) {
 		chunk_size = SZ_8K;
 		left_size = len - chunk_size;
 	}
