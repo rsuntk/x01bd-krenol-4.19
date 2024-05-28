@@ -139,3 +139,5 @@ kernel/configs/android-*.cfg
 # Script build
 out/
 *.zip
+compile.sh
+
