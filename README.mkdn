@@ -1,12 +1,10 @@
 AerithUniverse 4.19.x Kernel Source
-Big Thanks to @RyuujiX, @SonicBSV, and the others
-Based on KnightWalker 4.19 Kernel Source
 ==================================================
+
+Big Thanks to @RyuujiX, @SonicBSV, and the others. Based on KnightWalker 4.19 Kernel Source
 
 Getting Started
 ---------------
-You can use this source if u Want or Download Builded Kernel / Release build from this https://telegra.ph/Projekt-Walker-419-Kernel-Download-Links-09-25 ,
-
 Clone with `--recursive` option coz this source has submodule.
 
 Just Copy, Paste, Then Execute the command :)
