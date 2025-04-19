@@ -4,6 +4,9 @@ SECONDS=0
 ZIPNAME="Rissu-X01BD-$(date '+%Y%m%d-%H%M').zip"
 DEFCONFIG="asus/rsuntk-x01bd_defconfig"
 
+# if unset
+[ -z $IS_CI ] && IS_CI="false"
+
 if test -z "$(git rev-parse --show-cdup 2>/dev/null)" &&
    head=$(git rev-parse --verify HEAD 2>/dev/null); then
 	ZIPNAME="${ZIPNAME::-4}-$(echo $head | cut -c1-8).zip"
@@ -11,10 +14,10 @@ fi
 
 if ! [ -d "$HOME/zyc-clang" ]; then
 echo "ZyC Clang not found! Cloning..."
-wget -q  $(curl https://raw.githubusercontent.com/ZyCromerZ/Clang/main/Clang-14-link.txt 2>/dev/null) -O "ZyC-Clang-14.tar.gz"
+wget -q https://github.com/ZyCromerZ/Clang/releases/download/17.0.0-20230725-release/Clang-17.0.0-20230725.tar.gz -O "zyc-clang.tar.gz"
 mkdir ~/zyc-clang
-tar -xf ZyC-Clang-14.tar.gz -C ~/zyc-clang
-rm -rf ZyC-Clang-14.tar.gz
+tar -xf zyc-clang.tar.gz -C ~/zyc-clang
+rm -rf zyc-clang.tar.gz
 fi
 
 export BUILD_USERNAME=rsuntk
@@ -66,6 +69,10 @@ zip -r9 "../$ZIPNAME" * -x '*.git*' README.md *placeholder
 cd ..
 echo -e "\nCompleted in $((SECONDS / 60)) minute(s) and $((SECONDS % 60)) second(s) !"
 echo "Zip: $ZIPNAME"
+# Rissu: skip cleaning up out/arch/arm64/boot dir
+if [[ "$IS_CI" = "false" ]]; then
+rm -rf out/arch/arm64/boot AnyKernel3
+fi
 else
 echo -e "\nCompilation failed!"
 fi
