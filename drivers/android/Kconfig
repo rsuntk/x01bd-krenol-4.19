@@ -63,9 +63,10 @@ config ANDROID_BINDER_LOGS
 	  This option impacts performance.
 
 	  Say N on production builds.
+
 config ANDROID_SIMPLE_LMK
 	bool "Simple Android Low Memory Killer"
-	depends on !ANDROID_LOW_MEMORY_KILLER && !MEMCG && !PSI
+	depends on !MEMCG && !PSI
 	---help---
 	  This is a complete low memory killer solution for Android that is
 	  small and simple. Processes are killed according to the priorities
