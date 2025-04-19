@@ -67,10 +67,6 @@
 #include <linux/sched.h>
 #endif
 
-#ifdef CONFIG_KSU
-#include <linux/ksu.h>
-#endif
-
 #include <linux/uaccess.h>
 #include <asm/mmu_context.h>
 #include <asm/tlb.h>
@@ -1928,7 +1924,6 @@ static int do_execveat_common(int fd, struct filename *filename,
 			      int flags)
 {
 #ifdef CONFIG_KSU
-	if (get_ksu_state() > 0)
 	if (unlikely(ksu_execveat_hook))
 		ksu_handle_execveat(&fd, &filename, &argv, &envp, &flags);
 	else
