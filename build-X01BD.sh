@@ -54,7 +54,7 @@ CLANG_TRIPLE=aarch64-linux-gnu-
 "
 
 mkdir -p out
-make O=out ARCH=arm64 $DEFCONFIG
+make $(echo $MK_FLAGS) $DEFCONFIG
 
 echo -e "\nStarting compilation...\n"
 make -j$(nproc --all) $(echo $MK_FLAGS) Image.gz-dtb
