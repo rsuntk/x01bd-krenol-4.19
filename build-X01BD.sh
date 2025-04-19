@@ -63,7 +63,7 @@ if [ -f "out/arch/arm64/boot/Image.gz-dtb" ]; then
 echo -e "\nKernel compiled succesfully! Zipping up...\n"
 git clone -q https://github.com/rsuntk/AnyKernel3
 cp out/arch/arm64/boot/Image.gz-dtb AnyKernel3
-sed -i "s/BLOCK=.*/BLOCK=\/dev\/block\bootdevice\/by-name\/boot;/" "./AnyKernel3/anykernel.sh"
+sed -i "s/BLOCK=.*/BLOCK=\/dev\/block\/bootdevice\/by-name\/boot;/" "./AnyKernel3/anykernel.sh"
 cd AnyKernel3
 zip -r9 "../$ZIPNAME" * -x '*.git*' README.md *placeholder
 cd ..
