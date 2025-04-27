@@ -73,20 +73,6 @@ struct f2fs_device {
 	__le32 total_segments;
 } __packed;
 
-/* reason of stop_checkpoint */
-enum stop_cp_reason {
-	STOP_CP_REASON_SHUTDOWN,
-	STOP_CP_REASON_FAULT_INJECT,
-	STOP_CP_REASON_META_PAGE,
-	STOP_CP_REASON_WRITE_FAIL,
-	STOP_CP_REASON_CORRUPTED_SUMMARY,
-	STOP_CP_REASON_UPDATE_INODE,
-	STOP_CP_REASON_FLUSH_FAIL,
-	STOP_CP_REASON_MAX,
-};
-
-#define	MAX_STOP_REASON			32
-
 /* detail reason for EFSCORRUPTED */
 enum f2fs_error {
 	ERROR_CORRUPTED_CLUSTER,
@@ -152,7 +138,6 @@ struct f2fs_super_block {
 	__u8 hot_ext_count;		/* # of hot file extension */
 	__le16  s_encoding;		/* Filename charset encoding */
 	__le16  s_encoding_flags;	/* Filename charset encoding flags */
-	__u8 s_stop_reason[MAX_STOP_REASON];	/* stop checkpoint reason */
 	__u8 s_errors[MAX_F2FS_ERRORS];		/* reason of image corrupts */
 	__u8 reserved[258];		/* valid reserved region */
 	__le32 crc;			/* checksum of superblock */
