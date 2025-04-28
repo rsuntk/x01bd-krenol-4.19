@@ -142,18 +142,9 @@ static char *ramdisk_execute_command;
 
 #if defined(CONFIG_TOUCHSCREEN_NT36xxx) || defined(CONFIG_TOUCHSCREEN_NT36xxx_X00TD)
 #ifdef CONFIG_TOUCHSCREEN_NT36xxx_ASUS
-static unsigned int new_nvtouch = 1;
-
-static int __init set_new_nvtouch(char *val)
-{
-	get_option(&val, &new_nvtouch);
-	return 0;
-}
-__setup("use_new_nvtouch=", set_new_nvtouch);
-
 unsigned int get_new_nvtouch(void)
 {
-	return new_nvtouch;
+	return 1;
 }
 #endif
 #endif
